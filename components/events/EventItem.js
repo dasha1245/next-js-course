@@ -1,5 +1,6 @@
-import css from './EventItem.module.css';
+import Image from "next/image";
 
+import css from './EventItem.module.css';
 import Button from "@/components/ui/Button";
 import DateIcon from "@/components/icons/date-icon";
 import AddressIcon from "@/components/icons/address-icon";
@@ -16,7 +17,7 @@ function EventItem(props) {
     const explorerUrl = `/events/${id}`;
 
     return <li className={css.item}>
-        <img src={image} alt="event_image"/>
+        <Image src={'/' + image} alt={title} width={450} height={160}/>
         <div className={css.content}>
 
             <div>
