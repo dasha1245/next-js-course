@@ -34,7 +34,7 @@ async function handler(req, res) {
             let result;
             try {
                 result = await insertData(client, "comments", {comment: newComment})
-                newComment._id = result.insertedId
+                // newComment._id = result.insertedId
                 res.status(201).json({message: 'Added comment', comment: newComment})
             } catch (e) {
                 res.status(500).json({message: 'Inserting data failed!'})
