@@ -11,7 +11,6 @@ export async function getAllEvents () {
         })
     }
 
-    console.log(events)
     return events
 }
 

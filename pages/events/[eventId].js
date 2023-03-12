@@ -4,17 +4,18 @@ import {getEventById, getFeaturedEvents} from "../../helper/api-utils";
 import EventSummary from "@/components/event-detail/EventSummary";
 import EventLogistics from "@/components/event-detail/EventLogistics";
 import EventContent from "@/components/event-detail/EventContent";
+import Comments from "@/components/input/comments";
 
 function EventPage({selectedEvent}) {
 
-    if(!selectedEvent){
+    if (!selectedEvent) {
         return <Fragment>
             <div className='center'>
                 <p>Loading...</p>
             </div>
         </Fragment>
     }
-    const {title, description, date, location, image} = selectedEvent
+    const {title, description, date, location, image, id} = selectedEvent
 
     return <Fragment>
         <EventSummary title={title}/>
@@ -26,16 +27,17 @@ function EventPage({selectedEvent}) {
         <EventContent>
             <p>{description}</p>
         </EventContent>
+        <Comments eventId={id}/>
     </Fragment>
 }
 
-export async function getStaticProps(context){
+export async function getStaticProps(context) {
     const eventId = context.params.eventId;
     const event = await getEventById(eventId);
 
-    return{
+    return {
         props: {
-            selectedEvent : event
+            selectedEvent: event
         },
         revalidate: 30
     }
@@ -49,4 +51,5 @@ export async function getStaticPaths() {
         fallback: true
     }
 }
+
 export default EventPage
