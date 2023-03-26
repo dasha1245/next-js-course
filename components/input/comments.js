@@ -18,7 +18,7 @@ function Comments(props) {
                 .then(value => value.json())
                 .then(value => setComments(value.comments) )
         }
-    }, [showComments])
+    }, [eventId, showComments])
     function toggleCommentsHandler() {
         setShowComments((prevStatus) => !prevStatus);
     }
